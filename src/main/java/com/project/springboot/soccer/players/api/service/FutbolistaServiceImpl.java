@@ -3,6 +3,8 @@ package com.project.springboot.soccer.players.api.service;
 import com.project.springboot.soccer.players.api.model.Futbolista;
 import com.project.springboot.soccer.players.api.repository.FutbolistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +24,10 @@ public class FutbolistaServiceImpl implements FutbolistaService {
     @Override
     public Optional<Futbolista> getFutbolistaById(Long id) {
         return futbolistaRepository.findById(id);
+    }
+
+    @Override
+    public Page<Futbolista> getAllFutbolistas(Pageable pageable) {
+        return futbolistaRepository.findAll(pageable);
     }
 }
